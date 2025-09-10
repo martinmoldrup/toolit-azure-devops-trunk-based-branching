@@ -1,0 +1,26 @@
+[project]
+name = "toolit-azure-devops-trunk-based-branching"
+version = "0.1.0"
+description = "Toolit Plugin used for Azure DevOps with Trunk Based Branching Strategy"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "toolit>=0.2.0",
+]
+
+[tool.setuptools]  
+packages = ["src"]
+
+[build-system]
+requires = ["setuptools>=61.0"]  
+build-backend = "setuptools.build_meta"
+
+[project.entry-points.toolit_plugins]
+create_hotfix_branch = "src.create_branch:create_hotfix_branch"
+create_new_task_in_devops = "src.create_new_task_in_devops:create_new_task_in_devops"
+create_pull_request = "src.create_pr:create_pull_request"
+run_cd_release_on_current_branch = "src.run_remote_pipelines:run_cd_release_on_current_branch"
+run_ci_on_current_branch = "src.run_remote_pipelines:run_ci_on_current_branch"
+
+# Do a local edititable install of toolit with the command (using uv):
+# uv pip install -e ../toolit
