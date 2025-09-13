@@ -2,13 +2,16 @@
 
 import os
 import argparse
-from toolit.decorators import tool
+from toolit import tool, get_config_value
 
 
 @tool
-def run_cd_release_on_current_branch(pipeline_id: int):
+def run_cd_release_on_current_branch():
     """Run azure devops CI pipeline on current branch."""
     print("Running Remote CD pipeline on current branch")
+    pipeline_id = get_config_value("azure_devops_pipeline_id_for_cd_pipeline")
+    if not pipeline_id:
+        raise Exception("No pipeline ID configured. Please set 'azure_devops_pipeline_id_for_cd_pipeline' in toolit.ini or pyproject.toml")
     branch = os.popen("git rev-parse --abbrev-ref HEAD").read().strip()
     print(f"Branch: {branch}")
     result = os.system(f"az pipelines run --branch {branch} --id {pipeline_id} --open")
@@ -18,9 +21,12 @@ def run_cd_release_on_current_branch(pipeline_id: int):
 
 
 @tool
-def run_ci_on_current_branch(pipeline_id: int):
+def run_ci_on_current_branch():
     """Run azure devops CI pipeline on current branch."""
     print("Running CI pipeline on current branch")
+    pipeline_id = get_config_value("azure_devops_pipeline_id_for_ci_pipeline")
+    if not pipeline_id:
+        raise Exception("No pipeline ID configured. Please set 'azure_devops_pipeline_id_for_ci_pipeline' in toolit.ini or pyproject.toml")
     branch = os.popen("git rev-parse --abbrev-ref HEAD").read().strip()
     print(f"Branch: {branch}")
     result = os.system(f"az pipelines run --branch {branch} --id {pipeline_id} --open")

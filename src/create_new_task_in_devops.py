@@ -1,5 +1,5 @@
 import subprocess
-from toolit.decorators import tool
+from toolit import tool
 
 
 @tool

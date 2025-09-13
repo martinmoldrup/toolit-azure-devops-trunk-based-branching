@@ -10,7 +10,7 @@ import subprocess
 import re
 import enum
 from typing import Optional
-from toolit.decorators import tool
+from toolit import tool
 
 
 class PrTemplate(enum.Enum):
