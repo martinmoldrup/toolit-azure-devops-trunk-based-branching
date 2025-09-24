@@ -15,6 +15,10 @@ packages = ["src"]
 requires = ["setuptools>=61.0"]  
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools.package-data]
+toolit-azure-devops-trunk-based-branching = ["*.md"]
+
+
 [project.entry-points.toolit_plugins]
 create_hotfix_branch = "src.create_branch:create_hotfix_branch"
 create_new_task_in_devops = "src.create_new_task_in_devops:create_new_task_in_devops"

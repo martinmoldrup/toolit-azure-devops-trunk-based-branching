@@ -12,6 +12,8 @@ import enum
 from typing import Optional
 from toolit import tool
 
+PATH_DEFAULT_PR_TEMPLATE = pathlib.Path(__file__).parent / "pull_request_template.md"
+PATH_DEFAULT_PR_TEMPLATE_HOTFIX = pathlib.Path(__file__).parent / "bugfix_or_hotfix.md"
 
 class PrTemplate(enum.Enum):
     """The different pull request templates supported."""
@@ -23,9 +25,9 @@ class PrTemplate(enum.Enum):
 def _load_pull_request_template(pr_template: PrTemplate) -> str:
     """Load the pull request template."""
     if pr_template == PrTemplate.DEFAULT:
-        template_path = pathlib.Path(__file__).parent.parent / ".azuredevops/pull_request_template.md"
+        template_path = PATH_DEFAULT_PR_TEMPLATE
     elif pr_template == PrTemplate.HOTFIX:
-        template_path = pathlib.Path(__file__).parent.parent / ".azuredevops/pull_request_template/bugfix_or_hotfix.md"
+        template_path = PATH_DEFAULT_PR_TEMPLATE_HOTFIX
     with open(template_path) as fp:
         return fp.read()
 
