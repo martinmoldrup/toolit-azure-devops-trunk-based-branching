@@ -13,5 +13,5 @@ uv add "toolit-azure-devops-trunk-based-branching @ git+https://github.com/marti
 The git commit version will be locked in the lock file. To update to the latest version, you can use:
 
 ```bash
-uv add --upgrade-package toolit-azure-devops-trunk-based-branching
+uv add toolit-azure-devops-trunk-based-branching --upgrade-package toolit-azure-devops-trunk-based-branching
 ```
