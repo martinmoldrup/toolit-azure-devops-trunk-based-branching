@@ -7,11 +7,11 @@ This is an example of a Toolit Plugin. It defines a set of commands that can be 
 You can install this package using uv:
 
 ```bash
-uv add "toolit-azure-devops-trunk-based-branching @ git+https://github.com/martinmoldrup/toolit-azure-devops-trunk-based-branching"
+uv add "toolit-azure-devops-trunk-based-branching @ git+https://github.com/martinmoldrup/toolit-azure-devops-trunk-based-branching" --dev
 ```
 
 The git commit version will be locked in the lock file. To update to the latest version, you can use:
 
 ```bash
-uv add toolit-azure-devops-trunk-based-branching --upgrade-package toolit-azure-devops-trunk-based-branching
+uv add toolit-azure-devops-trunk-based-branching --upgrade-package toolit-azure-devops-trunk-based-branching --dev
 ```

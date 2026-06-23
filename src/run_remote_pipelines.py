@@ -7,7 +7,7 @@ from toolit import tool, get_config_value
 
 @tool
 def run_cd_release_on_current_branch():
-    """Run azure devops CI pipeline on current branch."""
+    """Run azure devops CD pipeline on current branch."""
     print("Running Remote CD pipeline on current branch")
     pipeline_id = get_config_value("azure_devops_pipeline_id_for_cd_pipeline")
     if not pipeline_id:
