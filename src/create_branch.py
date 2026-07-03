@@ -21,6 +21,19 @@ def create_hotfix_branch(name: str):
     os.system(f"git checkout -b {branch_name}")
     print("Finished")
 
+@tool
+def create_stacked_branch(name: str):
+    """
+    Create stacked branch on another branch.
+    """
+    print("Creating stacked branch")
+    name = name.replace(" ", "-").lower().strip()
+    current_branch = os.popen("git rev-parse --abbrev-ref HEAD").read().strip()
+    branch_name = f"{current_branch}/{name}"
+    print(f"Creating branch with name: {branch_name}")
+    # Create branch
+    os.system(f"git checkout -b {branch_name}")
+    print("Finished")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Create hotfix branch")
